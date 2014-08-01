@@ -1,12 +1,14 @@
 from ferris import Controller, route, messages
+from google.appengine.ext import ndb
+from app.models.songtest import Songtest
 
 class Hello(Controller):
+	class Meta:
+			View = 'json'
+
 
 	def list(self):
-		return "<h1> hello </h1>"
 
-	def queryTest():
-		salida = ""
 		song1 = Songtest( title = "song1" )
 		song1.put()
 		song2 = Songtest( title = "song2" )
@@ -22,10 +24,10 @@ class Hello(Controller):
 
 		songs = ndb.gql( " SELECT * FROM Songtest" )
 
-		JsonSong = model_message()
+		self.context['data'] = songs
 
-		#print songs.count()
-		#print songs
-		#print listOfSongs
+	@route	
+	def cosa(self):
+		return "hey"
 
-		return salida
+	
