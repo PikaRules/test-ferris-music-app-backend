@@ -11,15 +11,14 @@ class Usuarios(Controller):
 		self.context['data'] = usuarios
 
 	def add(self):
-		return "sdfsdfdsfsdfs"
+		self.context['data'] = self.request.params
 
-	def view(self, param):
-		usuario = Usuario.find_all_by_property(email=param)
-		self.context['data'] = usuario
+	def view(self, email):
+		self.context['data'] = self.request.params
 
 	def edit(self):
 		return "sdfsdfdsfsdfs"
 
 	def delete(self):
-		return "sdfsdfdsfsdfs"
+		self.context['data'] = self.request.params
 
