@@ -7,8 +7,8 @@ class Usuarios(Controller):
 
 
 	def list(self):
-		#usuarios = Usuario.all()
-		self.context['data'] = {'test':'test'}
+		usuarios = Usuario.all()
+		self.context['data'] = usuarios
 
 	def add(self):
 		return "sdfsdfdsfsdfs"
