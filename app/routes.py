@@ -5,3 +5,5 @@ from app.controllers.usuarios import Usuarios
 routing.auto_route()
 
 
+# Default root route
+#routing.default_root()
