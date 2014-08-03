@@ -30,4 +30,22 @@ class Hello(Controller):
 	def cosa(self):
 		return "hey"
 
+	@route
+	def jquery(self):
+		html = '<!doctype html>'
+		html += '<html>'
+		html += '<head>'
+		html += '<meta charset="utf-8" />'
+		html += '<title>Demo</title>'
+		html += '</head>'
+		html += '<body>'
+		html += '<a href="http://jquery.com/">jQuery</a>'
+		html += '<script src="jquery.js"></script>'
+		html += '<script>'
+		html += '</script>'
+		html += 'que onda!'
+		html += '</body>'
+		html += '</html>'
+
+		return html
 	
