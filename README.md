@@ -34,3 +34,13 @@ Third-party libraries that are in the packages directory have varying licenses. 
  * GData Client Library: Apache License v2
  * Google API Python Client Library: Apache License v2
  * OAuth2 Client: Apache License v2
+
+
+
+var request = $.ajax({
+    type: 'GET',
+    url: 'http://localhost:8080/home',
+    dataType: "json"});
+request.done(function(data){
+    console.log(data);
+}); 
