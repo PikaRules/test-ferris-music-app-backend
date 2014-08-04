@@ -11,5 +11,5 @@ class Usuario(BasicModel):
 
 	@staticmethod
 	def find_by_email( email ):
-		result = ndb.gql( " SELECT * FROM Songtest WHERE title = :1", email )
+		result = ndb.gql( " SELECT * FROM Usuario WHERE email = :1", email )
 		return result

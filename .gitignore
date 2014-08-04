@@ -3,3 +3,16 @@ ds
 *.coverage
 *~
 .appengine_data
+/node_modules/
+sh.exe.stackdump
+*.orig
+*.komodoproject
+nbproject
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*~
+*.sublime-project
+*.sublime-workspace
+npm-debug.log
