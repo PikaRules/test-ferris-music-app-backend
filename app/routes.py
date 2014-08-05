@@ -9,7 +9,7 @@ class HomeHandler(webapp2.RequestHandler):
         self.response.write('This is the HomeHandler.')
 
 # Routes all App handlers
-#routing.auto_route()
+routing.auto_route()
 
 routing.add(routing.Route('/home', HomeHandler))
 

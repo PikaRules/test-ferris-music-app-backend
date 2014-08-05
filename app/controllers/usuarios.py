@@ -10,13 +10,23 @@ class Usuarios(Controller):
 
 	#get all
 	def list(self):
+		self.response.headers['Access-Control-Allow-Origin'] = '*'
+		#self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
 		usuarios = Usuario.all()
 		self.context['data'] = usuarios
 
+
+    #self.response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
 	def api_list(self):
-		#self.response.headers['Access-Control-Allow-Origin'] = '*'
-	    #self.response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept'
-	    #self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+		self.response.headers['Access-Control-Allow-Origin'] = '*'
+		self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+		usuarios = Usuario.all()
+		self.context['data'] = usuarios	
+
+	@route
+	def api_getAll(self):
+		self.response.headers['Access-Control-Allow-Origin'] = '*'
+		self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
 		usuarios = Usuario.all()
 		self.context['data'] = usuarios	
 

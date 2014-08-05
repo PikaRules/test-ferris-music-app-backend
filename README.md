@@ -39,7 +39,7 @@ Third-party libraries that are in the packages directory have varying licenses. 
 
 var request = $.ajax({
     type: 'GET',
-    url: 'http://localhost:8080/home',
+    url: 'http://localhost:9080/api/usuarios',
     dataType: "json"});
 request.done(function(data){
     console.log(data);
