@@ -1,5 +1,6 @@
 from ferris import Controller, route
 from app.models.usuario import Usuario
+import json
 
 
 class Usuarios(Controller):
@@ -31,16 +32,26 @@ class Usuarios(Controller):
 		self.context['data'] = usuarios	
 
 	@route
-	def api_addNew( self, email, name ):
-		newUser = Usuario( email = email, name = name )
-		newUser.put()
+	def api_addNew( self ):
+		self.response.headers['Access-Control-Allow-Origin'] = '*'
+		self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
+		email = self.request.POST.get('email')
+		name = self.request.POST.get('name')
+		if ( email and  name ):
+			newUser = Usuario( email = email, name = name )
+			newUser.put()
+		
 
 	@route
 	def api_getOne(self, email):
+		self.response.headers['Access-Control-Allow-Origin'] = '*'
+		self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
 		self.context['data'] = Usuario.find_by_email( email )
 
 	@route
 	def api_updateOne(self):
+		self.response.headers['Access-Control-Allow-Origin'] = '*'
+		self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
 		self.context['data'] =  self.request.params
 
 
