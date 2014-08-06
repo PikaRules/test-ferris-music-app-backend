@@ -35,8 +35,13 @@ class Usuarios(Controller):
 	def api_addNew( self ):
 		self.response.headers['Access-Control-Allow-Origin'] = '*'
 		self.response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
-		email = self.request.POST.get('email')
-		name = self.request.POST.get('name')
+		self.response.headers['Access-Control-Max-Age'] = '3600'
+		self.response.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, dataType'
+		jsonstring = self.request.body.replace( "'",'"').replace("\'",'"')
+		jsonObject = json.loads(  jsonstring  ) 
+		email = jsonObject['email']
+		name = jsonObject['name']
+		self.context['data'] = jsonObject
 		if ( email and  name ):
 			newUser = Usuario( email = email, name = name )
 			newUser.put()
