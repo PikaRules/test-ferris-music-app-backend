@@ -1,12 +1,11 @@
 from ferris import Controller, route
 from app.models.artist import Artist
-from app.models.song import Song
 from app.tools.request_helper import RequestHelper
 import json
 import sys
 
 
-class Songs(Controller,RequestHelper):
+class Artists(Controller,RequestHelper):
 	class Meta:
 		View = 'json'
 		prefixes = ('api',)
@@ -15,19 +14,20 @@ class Songs(Controller,RequestHelper):
 	@route
 	def api_getAll(self):
 		self.setCordsHeaders()
-		songs = Song.all()
-		self.context['data'] = songs	
+		artists = Artist.all()
+		self.context['data'] = artists	
 
 	@route
 	def api_addNew( self ):
 		self.setCordsHeaders()
 		try:
 			jsonObject = self.getPostDataObject()
-			title = jsonObject.get('title','')
-			"""description = jsonObject.get('description','')
+			name = jsonObject.get('name','')
+			sex = jsonObject.get('sex','')
+			description = jsonObject.get('description','')
 			self.context['data'] = jsonObject
 			if name :
-				newFoo = Song( name = name, description = description )
-				newFoo.put()"""
+				newFoo = Artist( name = name, sex = sex, description = description )
+				newFoo.put()
 		except:
 			self.context['data'] = sys.exc_info()

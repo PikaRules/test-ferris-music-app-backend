@@ -44,3 +44,13 @@ var request = $.ajax({
 request.done(function(data){
     console.log(data);
 }); 
+
+var request = $.ajax({
+    type: 'POST',
+    url: 'http://localhost:9080/api/usuarios/addNew',
+    data: { "email": "pite@yahoo.com", "name":"lll"},
+    dataType: "json"
+});
+request.done(function(data){
+    console.log(data);
+}); 

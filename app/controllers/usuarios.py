@@ -56,5 +56,3 @@ class Usuarios(Controller,RequestHelper):
 	def api_updateOne(self):
 		self.setCordsHeaders()
 		self.context['data'] =  self.request.params
-
-

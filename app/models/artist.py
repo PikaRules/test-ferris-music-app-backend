@@ -1,6 +1,6 @@
 from ferris import BasicModel, ndb
 
-class Artist(BasicModel)
+class Artist(BasicModel):
 	name = ndb.StringProperty(required=True)
 	sex = ndb.StringProperty( choices=( 'male','female' ) )
 	description = ndb.StringProperty()
