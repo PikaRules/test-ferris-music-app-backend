@@ -16,24 +16,24 @@ class Songs(Controller,RequestHelper):
 	def api_getAll(self):
 		self.setCordsHeaders()
 		songs = Song.all()
-		self.context['data'] = songs	
+		self.context['data'] = songs
 
 	@route
 	def api_addNew( self ):
 		self.setCordsHeaders()
+		response = { "success": False , "error": "" }
 		try:
 			jsonObject = self.getPostDataObject()
 			artist_key = ndb.Key( jsonObject['artist']['__kind__'], jsonObject['artist']['__id__'] )
-			self.context['data'] = artist_key
 			myArtist = artist_key.get()
 			song_title = jsonObject['song']['title']
 			song_description = jsonObject['song']['description']
-			newFoo = Song( title = song_title, description = song_description, artist = myArtist )
-			newFoo.put()
-			"""description = jsonObject.get('description','')
-			self.context['data'] = jsonObject
-			if name :
-				newFoo = Song( name = name, description = description )
-				newFoo.put()"""
+			if song_title :
+				newFoo = Song( title = song_title, description = song_description, artist = myArtist )
+				newFoo.put()
+				response['success'] = True
+			self.context['data'] = response
 		except:
-			self.context['data'] = sys.exc_info()
+			response['success'] = False
+			response['error'] = sys.exc_info()
+			self.context['data'] = response

@@ -34,8 +34,9 @@ class Usuarios(Controller,RequestHelper):
 
 	@route
 	def api_addNew( self ):
+		self.setCordsHeaders()
+		response = { "success": False , "error": "" }
 		try:
-			self.setCordsHeaders()
 			jsonObject = self.getPostDataObject()
 			email = jsonObject['email']
 			name = jsonObject['name']
@@ -43,8 +44,12 @@ class Usuarios(Controller,RequestHelper):
 			if ( email and  name ):
 				newUser = Usuario( email = email, name = name )
 				newUser.put()
+				response['success'] = True
+			self.context['data'] = response
 		except:
-			self.context['data'] = sys.exc_info()
+			response['success'] = False
+			response['error'] = sys.exc_info()
+			self.context['data'] = response
 		
 
 	@route
