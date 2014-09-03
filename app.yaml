@@ -1,4 +1,4 @@
-application: myfirstferris    #.appspot.com
+application: music-app-bakcend-test1    #.appspot.com
 version: 1
 
 runtime: python27
@@ -41,8 +41,13 @@ skip_files:
 - ^(.*/)?.*\.less
 - ^/docs*
 
+
 handlers:
 
 # Main script
+
+- url: /stats.*
+  script: google.appengine.ext.appstats.ui.app
+
 - url: .*
   script: main.main_app
