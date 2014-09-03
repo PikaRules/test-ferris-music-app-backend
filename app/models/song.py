@@ -8,7 +8,7 @@ class Song(BasicModel):
 
 	title=ndb.StringProperty(required=True)
 	description = ndb.StringProperty()
-	artist=ndb.StructuredProperty( Artist )
+	artist = ndb.KeyProperty( kind = Artist )
 
 	@classmethod
 	def all(self):
