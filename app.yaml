@@ -1,4 +1,4 @@
-application: myfirstferris    #.appspot.com
+application: music-app-bakcend-test1    #.appspot.com
 version: 1
 
 runtime: python27

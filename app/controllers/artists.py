@@ -20,6 +20,7 @@ class Artists(Controller,RequestHelper):
 	@route
 	def api_addNew( self ):
 		self.setCordsHeaders()
+		response = { "success": False , "error": "" }
 		try:
 			jsonObject = self.getPostDataObject()
 			name = jsonObject.get('name','')
@@ -29,5 +30,9 @@ class Artists(Controller,RequestHelper):
 			if name :
 				newFoo = Artist( name = name, sex = sex, description = description )
 				newFoo.put()
+				response['success'] = True
+			self.context['data'] = response
 		except:
-			self.context['data'] = sys.exc_info()
+			response['success'] = False
+			response['error'] = sys.exc_info()
+			self.context['data'] = response

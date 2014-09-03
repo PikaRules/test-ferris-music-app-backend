@@ -8,6 +8,9 @@ class HomeHandler(webapp2.RequestHandler):
     	self.response.headers['Access-Control-Allow-Origin'] = '*'
         self.response.write('This is the HomeHandler.')
 
+
+routing.redirect('/', to='/home')
+
 # Routes all App handlers
 routing.auto_route()
 
