@@ -12,10 +12,26 @@ class Song(BasicModel):
 
 	@classmethod
 	def all(self):
-		songs = ndb.gql( " SELECT * FROM Song" )
+
+		msong = {
+				"title": "",
+				"description": "",
+				"artist": ""
+			}
+
+		query_songs = ndb.gql( " SELECT * FROM Song" )
+
 		return songs
 
 	@classmethod
 	def find_by_title(self,title):
 		songs = ndb.gql( " SELECT * FROM Song WHERE title = :1", title )
 		return songs
+
+    #https://developers.google.com/appengine/docs/python/ndb/async#tasklets
+
+
+	@ndg.tasklet
+	def all_callback(song):
+		tartist = yield song.artist.get_async()
+		raise ndb.Return(artist)
