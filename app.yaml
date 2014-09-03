@@ -41,8 +41,13 @@ skip_files:
 - ^(.*/)?.*\.less
 - ^/docs*
 
+
 handlers:
 
 # Main script
+
+- url: /stats.*
+  script: google.appengine.ext.appstats.ui.app
+
 - url: .*
   script: main.main_app

@@ -61,8 +61,8 @@ settings['upload'] = {
 # Enables or disables app stats.
 # Note that appstats must also be enabled in app.yaml.
 settings['appstats'] = {
-    'enabled': False,
-    'enabled_live': False
+    'enabled': True,
+    'enabled_live': True
 }
 
 # Optionally, you may use the settings plugin to dynamically
